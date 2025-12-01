@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BIGBEE | Evolving The Legacy</title>
-    <meta name="description" content="BIGBEE: The first Zero-Drain, No-Cloud, Universal Retrofit Intercom. Open Hardware Project." />
+    <meta name="description" content="BIGBEE: The first Zero-Drain, No-Cloud, Universal Retrofit Intercom. Open Hardware Project.">
     
     <style>
         :root {
@@ -25,7 +25,7 @@
         body {
             background-color: var(--bg-color);
             color: var(--text-main);
-            font-family: 'Menlo', 'Monaco', 'Courier New', monospace;
+            font-family: 'Menlo', 'Consolas', 'Monaco', 'Courier New', monospace; /* Font stack migliorato */
             line-height: 1.6;
             display: flex;
             justify-content: center;
@@ -48,16 +48,20 @@
             padding-bottom: 40px;
             margin-top: 40px;
             text-align: center;
+            overflow: hidden; /* Previene scrollbar orizzontali indesiderate */
         }
 
         .ascii-art {
+            font-family: 'Menlo', 'Consolas', 'Monaco', 'Courier New', monospace;
             font-weight: bold;
+            color: #00ff41; /* Hacker Green */
             white-space: pre;
             overflow-x: auto;
             font-size: 14px;
             line-height: 1.1;
             display: inline-block;
             text-align: left;
+            padding-bottom: 10px;
         }
 
         /* MAIN CONTENT */
@@ -71,6 +75,7 @@
             font-weight: normal;
             letter-spacing: -1px;
             margin-bottom: 15px;
+            color: #fff;
         }
 
         .lead {
@@ -92,7 +97,7 @@
         .spec-card {
             border: 1px solid var(--border);
             padding: 20px;
-            transition: transform 0.2s;
+            transition: border-color 0.3s ease;
         }
 
         .spec-card:hover {
@@ -111,6 +116,7 @@
         .value {
             font-size: 1.1rem;
             font-weight: bold;
+            color: #fff;
         }
 
         .detail {
@@ -126,7 +132,7 @@
             justify-content: center;
             gap: 20px;
             flex-wrap: wrap;
-            margin-top: 20px;
+            margin-top: 30px;
         }
 
         .btn {
@@ -136,8 +142,11 @@
             color: var(--text-main);
             text-decoration: none;
             text-transform: uppercase;
+            font-weight: bold;
             font-size: 0.9rem;
             transition: all 0.3s ease;
+            background-color: transparent;
+            cursor: pointer;
         }
 
         .btn:hover {
@@ -170,7 +179,7 @@
             margin-top: 20px;
             display: flex;
             justify-content: center;
-            gap: 10px;
+            gap: 15px;
             flex-wrap: wrap;
         }
 
@@ -178,10 +187,11 @@
             border: 1px solid #333;
             color: #555;
             text-decoration: none;
-            padding: 4px 8px;
+            padding: 5px 10px;
             font-size: 10px;
             letter-spacing: 1px;
             transition: all 0.3s;
+            display: inline-block;
         }
 
         .badge:hover {
@@ -191,481 +201,9 @@
 
         /* MOBILE OPTIMIZATIONS */
         @media (max-width: 600px) {
-            .ascii-art { font-size: 10px; }
+            .ascii-art { font-size: 9px; } /* Ancora più piccolo per sicurezza */
             h1 { font-size: 1.5rem; }
-            .actions { flex-direction: column; }
-            .btn { width: 100%; text-align: center; }
-        }
-    </style>
-</head>
-<body>
-
-    <div class="container">
-        
-        <div class="logo-container">
-            <div class="ascii-art">
-██▀▀█ █ █▀▀ █▀▀█ █▀▀ █▀▀
-██▀▀▄ █ █ █ █▀▀▄ █▀▀ █▀▀
-██▄▄█_█_▀▀▀_██▄█_█▄▄_█▄▄
-▄▄ EVOLVING THE LEGACY ▄▄</div>
-        </div>
-
-        <div class="hero">
-            <h1>SYSTEM STATUS: ONLINE</h1>
-            <p class="lead">
-                The first Zero-Drain, No-Cloud, Universal Retrofit Intercom.<br />
-                Designed to last decades, not months.
-            </p>
-
-            <div class="actions">
-                <a href="https://github.com/bigbee-project/BIGBEE-Open-Source-Intercom" class="btn">View Source Code</a>
-                <a href="#" class="btn secondary">Read Manifesto</a>
-            </div>
-        </div>
-
-        <div class="specs-grid">
-            
-            <div class="spec-card">
-                <span class="label">Power Architecture</span>
-                <div class="value">True UPS / Zero-Drain</div>
-                <span class="detail">Physical battery bypass &amp; 7+ months autonomy.</span>
-            </div>
-
-            <div class="spec-card">
-                <span class="label">Privacy &amp; Data</span>
-                <div class="value">100% Local / No Cloud</div>
-                <span class="detail">Your home, your data. Offline-First logic.</span>
-            </div>
-
-            <div class="spec-card">
-                <span class="label">Core System</span>
-                <div class="value">ESP32-S3</div>
-                <span class="detail">Zigbee Mesh Ready &amp; Multi-Protocol.</span>
-            </div>
-
-            <div class="spec-card">
-                <span class="label">Configuration</span>
-                <div class="value">Magic OTG</div>
-                <span class="detail">App-free setup via USB Mass Storage.</span>
-            </div>
-
-            <div class="spec-card">
-                <span class="label">License</span>
-                <div class="value">CERN-OHL-S v2</div>
-                <span class="detail">Strongly Reciprocal Open Hardware.</span>
-            </div>
-
-            <div class="spec-card">
-                <span class="label">Compatibility</span>
-                <div class="value">Universal 4+n</div>
-                <span class="detail">10-Pin Header + Jumper Configuration.</span>
-            </div>
-
-        </div>
-
-        <footer>
-            <p>ESTABLISHED: NOV 2025 | STATUS: PRIOR ART RECORDED</p>
-            <p style="margin-top: 10px;">
-                Documentation &amp; Schematics released under CERN-OHL-S v2.<br />
-                Firmware released under GNU GPL v3.
-            </p>
-
-            <div class="compliance-badges">
-                <a href="https://validator.w3.org/check?uri=referer" target="_blank" class="badge">[ W3C HTML5 ]</a>
-                <a href="https://jigsaw.w3.org/css-validator/check/referer" target="_blank" class="badge">[ W3C CSS ]</a>
-                <span class="badge">[ OSHW COMPLIANT ]</span>
-                <span class="badge">[ NO-JS TRACKING ]</span>
-            </div>
-        </footer>
-
-    </div>
-
-</body>
-</html>
-        .container {
-            width: 100%;
-            max-width: 900px;
-            display: flex;
-            flex-direction: column;
-            gap: 40px;
-        }
-
-        /* LOGO SECTION */
-        .logo-container {
-            border-bottom: 1px solid var(--border);
-            padding-bottom: 40px;
-            margin-top: 40px;
-            text-align: center;
-        }
-
-        .ascii-art {
-            font-weight: bold;
-            white-space: pre;
-            overflow-x: auto;
-            font-size: 14px;
-            line-height: 1.1;
-            display: inline-block;
-            text-align: left;
-        }
-
-        /* MAIN CONTENT */
-        .hero {
-            text-align: center;
-            padding: 20px 0;
-        }
-
-        h1 {
-            font-size: 2rem;
-            font-weight: normal;
-            letter-spacing: -1px;
-            margin-bottom: 15px;
-        }
-
-        .lead {
-            font-size: 1.1rem;
-            color: var(--text-dim);
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        /* SPECS GRID */
-        .specs-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            border-top: 1px solid var(--border);
-            padding-top: 40px;
-        }
-
-        .spec-card {
-            border: 1px solid var(--border);
-            padding: 20px;
-            transition: transform 0.2s;
-        }
-
-        .spec-card:hover {
-            border-color: var(--text-main);
-        }
-
-        .label {
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: var(--text-dim);
-            display: block;
-            margin-bottom: 10px;
-        }
-
-        .value {
-            font-size: 1.1rem;
-            font-weight: bold;
-        }
-
-        .detail {
-            display: block;
-            font-size: 0.85rem;
-            color: var(--text-dim);
-            margin-top: 5px;
-        }
-
-        /* BUTTONS */
-        .actions {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
-            margin-top: 20px;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 15px 30px;
-            border: 1px solid var(--text-main);
-            color: var(--text-main);
-            text-decoration: none;
-            text-transform: uppercase;
-            font-size: 0.9rem;
-            transition: all 0.3s ease;
-        }
-
-        .btn:hover {
-            background-color: var(--text-main);
-            color: var(--bg-color);
-        }
-
-        .btn.secondary {
-            border-color: var(--border);
-            color: var(--text-dim);
-        }
-
-        .btn.secondary:hover {
-            border-color: var(--text-dim);
-            color: var(--text-main);
-            background: transparent;
-        }
-
-        /* FOOTER & COMPLIANCE */
-        footer {
-            margin-top: auto;
-            padding-top: 40px;
-            border-top: 1px solid var(--border);
-            text-align: center;
-            font-size: 0.8rem;
-            color: var(--text-dim);
-        }
-
-        .compliance-badges {
-            margin-top: 20px;
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            flex-wrap: wrap;
-        }
-
-        .badge {
-            border: 1px solid #333;
-            color: #555;
-            text-decoration: none;
-            padding: 4px 8px;
-            font-size: 10px;
-            letter-spacing: 1px;
-            transition: all 0.3s;
-        }
-
-        .badge:hover {
-            border-color: #666;
-            color: #aaa;
-        }
-
-        /* MOBILE OPTIMIZATIONS */
-        @media (max-width: 600px) {
-            .ascii-art { font-size: 10px; }
-            h1 { font-size: 1.5rem; }
-            .actions { flex-direction: column; }
-            .btn { width: 100%; text-align: center; }
-        }
-    </style>
-</head>
-<body>
-
-    <div class="container">
-        
-        <div class="logo-container">
-            <div class="ascii-art">
-██▀▀█ █ █▀▀ █▀▀█ █▀▀ █▀▀
-██▀▀▄ █ █ █ █▀▀▄ █▀▀ █▀▀
-██▄▄█_█_▀▀▀_██▄█_█▄▄_█▄▄
-▄▄ EVOLVING THE LEGACY ▄▄</div>
-        </div>
-
-        <div class="hero">
-            <h1>SYSTEM STATUS: ONLINE</h1>
-            <p class="lead">
-                The first Zero-Drain, No-Cloud, Universal Retrofit Intercom.<br />
-                Designed to last decades, not months.
-            </p>
-
-            <div class="actions">
-                <a href="https://github.com/bigbee-project/BIGBEE-Open-Source-Intercom" class="btn">View Source Code</a>
-                <a href="#" class="btn secondary">Read Manifesto</a>
-            </div>
-        </div>
-
-        <div class="specs-grid">
-            
-            <div class="spec-card">
-                <span class="label">Power Architecture</span>
-                <div class="value">True UPS / Zero-Drain</div>
-                <span class="detail">Physical battery bypass &amp; 7+ months autonomy.</span>
-            </div>
-
-            <div class="spec-card">
-                <span class="label">Privacy &amp; Data</span>
-                <div class="value">100% Local / No Cloud</div>
-                <span class="detail">Your home, your data. Offline-First logic.</span>
-            </div>
-
-            <div class="spec-card">
-                <span class="label">Core System</span>
-                <div class="value">ESP32-S3</div>
-                <span class="detail">Zigbee Mesh Ready &amp; Multi-Protocol.</span>
-            </div>
-
-            <div class="spec-card">
-                <span class="label">Configuration</span>
-                <div class="value">Magic OTG</div>
-                <span class="detail">App-free setup via USB Mass Storage.</span>
-            </div>
-
-            <div class="spec-card">
-                <span class="label">License</span>
-                <div class="value">CERN-OHL-S v2</div>
-                <span class="detail">Strongly Reciprocal Open Hardware.</span>
-            </div>
-
-            <div class="spec-card">
-                <span class="label">Compatibility</span>
-                <div class="value">Universal 4+n</div>
-                <span class="detail">10-Pin Header + Jumper Configuration.</span>
-            </div>
-
-        </div>
-
-        <footer>
-            <p>ESTABLISHED: NOV 2025 | STATUS: PRIOR ART RECORDED</p>
-            <p style="margin-top: 10px;">
-                Documentation &amp; Schematics released under CERN-OHL-S v2.<br />
-                Firmware released under GNU GPL v3.
-            </p>
-
-            <div class="compliance-badges">
-                <a href="https://validator.w3.org/check?uri=referer" target="_blank" class="badge">[ W3C HTML5 ]</a>
-                <a href="https://jigsaw.w3.org/css-validator/check/referer" target="_blank" class="badge">[ W3C CSS ]</a>
-                <span class="badge">[ OSHW COMPLIANT ]</span>
-                <span class="badge">[ NO-JS TRACKING ]</span>
-            </div>
-        </footer>
-
-    </div>
-
-</body>
-</html>
-            width: 100%;
-            max-width: 900px;
-            display: flex;
-            flex-direction: column;
-            gap: 40px;
-        }
-
-        /* LOGO SECTION */
-        .logo-container {
-            border-bottom: 1px solid var(--border);
-            padding-bottom: 40px;
-            margin-top: 40px;
-            text-align: center;
-        }
-
-        .ascii-art {
-            font-weight: bold;
-            white-space: pre;
-            overflow-x: auto; /* Permette scroll su schermi piccolissimi */
-            font-size: 14px;
-            line-height: 1.1;
-            display: inline-block;
-            text-align: left;
-        }
-
-        /* MAIN CONTENT */
-        .hero {
-            text-align: center;
-            padding: 20px 0;
-        }
-
-        h1 {
-            font-size: 2rem;
-            font-weight: normal;
-            letter-spacing: -1px;
-            margin-bottom: 15px;
-        }
-
-        .lead {
-            font-size: 1.1rem;
-            color: var(--text-dim);
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        /* SPECS GRID (Responsive) */
-        .specs-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            border-top: 1px solid var(--border);
-            padding-top: 40px;
-        }
-
-        .spec-card {
-            border: 1px solid var(--border);
-            padding: 20px;
-            transition: transform 0.2s;
-        }
-
-        .spec-card:hover {
-            border-color: var(--text-main);
-        }
-
-        .label {
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: var(--text-dim);
-            display: block;
-            margin-bottom: 10px;
-        }
-
-        .value {
-            font-size: 1.1rem;
-            font-weight: bold;
-        }
-
-        .detail {
-            display: block;
-            font-size: 0.85rem;
-            color: var(--text-dim);
-            margin-top: 5px;
-        }
-
-        /* BUTTONS */
-        .actions {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
-            margin-top: 20px;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 15px 30px;
-            border: 1px solid var(--text-main);
-            color: var(--text-main);
-            text-decoration: none;
-            text-transform: uppercase;
-            font-size: 0.9rem;
-            transition: all 0.3s ease;
-        }
-
-        .btn:hover {
-            background-color: var(--text-main);
-            color: var(--bg-color);
-        }
-
-        .btn.secondary {
-            border-color: var(--border);
-            color: var(--text-dim);
-        }
-
-        .btn.secondary:hover {
-            border-color: var(--text-dim);
-            color: var(--text-main);
-            background: transparent;
-        }
-
-        /* FOOTER */
-        footer {
-            margin-top: auto;
-            padding-top: 40px;
-            border-top: 1px solid var(--border);
-            text-align: center;
-            font-size: 0.8rem;
-            color: var(--text-dim);
-        }
-
-        /* MOBILE OPTIMIZATIONS */
-        @media (max-width: 600px) {
-            .ascii-art { font-size: 10px; } /* Rimpicciolisce il logo su mobile */
-            h1 { font-size: 1.5rem; }
-            .actions { flex-direction: column; }
+            .actions { flex-direction: column; width: 100%; }
             .btn { width: 100%; text-align: center; }
         }
     </style>
@@ -691,7 +229,7 @@
 
             <div class="actions">
                 <a href="https://github.com/bigbee-project/BIGBEE-Open-Source-Intercom" class="btn">View Source Code</a>
-                <a href="#" class="btn secondary">Read Manifesto</a>
+                <a href="https://github.com/bigbee-project/BIGBEE-Open-Source-Intercom/blob/main/README.md" class="btn secondary">Read Manifesto</a>
             </div>
         </div>
 
@@ -741,6 +279,13 @@
                 Documentation & Schematics released under CERN-OHL-S v2.<br>
                 Firmware released under GNU GPL v3.
             </p>
+
+            <div class="compliance-badges">
+                <a href="https://validator.w3.org/check?uri=referer" target="_blank" class="badge">[ W3C HTML5 ]</a>
+                <a href="https://jigsaw.w3.org/css-validator/check/referer" target="_blank" class="badge">[ W3C CSS ]</a>
+                <span class="badge">[ OSHW COMPLIANT ]</span>
+                <span class="badge">[ NO-JS TRACKING ]</span>
+            </div>
         </footer>
 
     </div>
