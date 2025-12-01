@@ -76,3 +76,4 @@ This hardware project is released under license CERN OHL-S v2.
 The associated firmware is released under license GNU GPL v3.
 
 Architecture Definition Date: November 30, 2025
+Contact: project.bigbee@gmail.com
