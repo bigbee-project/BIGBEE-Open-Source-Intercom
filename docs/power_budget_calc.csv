@@ -3,12 +3,11 @@ ESP32-S3,Deep Sleep,10,86400,240.00
 MCP1702 LDO,Quiescent,2,86400,48.00
 BMS Protection,Standby,3,86400,72.00
 Leakage (Caps+PCB),Estimated,5,86400,120.00
-,,,,,
+,,,,
 EVENT: Keepalive,Active (WiFi NTP),120000,5,166.67
 EVENT: Intercom Call,Active (Audio+Relay),150000,120,5000.00
-,,,,,
-TOTAL DAILY DRAIN (Avg),,,5646.67 uAh (~5.6 mAh)
-BATTERY CAPACITY (Derated),,,3000 mAh (Samsung 35E)
-ESTIMATED RUNTIME,,,531 Days (Theoretical)
-SAFETY MARGIN (50%),,,265 Days (~8.8 Months)
-  
+,,,,
+TOTAL DAILY DRAIN (Avg),,,,5646.67
+BATTERY CAPACITY (Derated),,,,3000 mAh
+ESTIMATED RUNTIME (Days),,,,531
+SAFETY MARGIN (50%),,,,265 Days
