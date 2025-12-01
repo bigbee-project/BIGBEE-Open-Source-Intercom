@@ -1,0 +1,32 @@
+BIGBEE HARDWARE DESIGN NOTES - WORK LOG
+
+[1] AUDIO INPUT PROTECTION CALCULATION (RX LINE)
+Target: Protect ESP32 ADC (Max 3.3V) from Urmet Line spikes (>20V AC).
+Method: AC Coupling + Zener Clamping + Voltage Divider.
+- Coupling Cap: 1uF (Film type preferred for audio quality vs Electrolytic).
+- Zener: 3.6V (To clip anything above 3.3V rail + margin).
+- Series Resistor: 4.7k Ohm.
+  * Logic: If input spikes to 24V, Zener clamps at 3.6V.
+  * Current through Zener = (24V - 3.6V) / 10k = ~2mA. Safe (Zener is 500mW).
+
+[2] USB SOFT-START (INRUSH LIMITER)
+Issue: Connecting USB causes voltage dip due to bulk capacitors (2200uF).
+Solution: P-MOSFET as Miller Integrator.
+- R_gate = 100k
+- C_gate_drain = 10uF
+- Time Constant (Tau) = R * C = 1s (Too slow?) -> Check Miller Effect.
+- Effective Rise Time ~ 50-100ms. 
+- Result: Soft ramp-up, no sparks on connector.
+
+[3] BATTERY MONITORING (ZERO-DRAIN)
+Standard resistor divider consumes power 24/7 (e.g. 100k+100k @ 8V = 40uA constant drain).
+Fix: High-Side P-MOS switch controlled by GPIO 05.
+- Measurement active only for 50ms per day.
+- Avg Consumption: ~0.0001 uA.
+
+[4] THERMAL CONSIDERATIONS (L4940V5)
+Max current during door open: 300mA (Relays + Solenoid).
+Drop: 8.4V (Batt) - 5V = 3.4V.
+Power Dissipated: 3.4V * 0.3A = 1.02W.
+Notes: TO-220 package without heatsink handles ~1W warm but safe.
+Action: Ensure PCB copper pour area > 2cm^2 on tab.
