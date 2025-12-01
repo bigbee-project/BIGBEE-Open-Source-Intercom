@@ -7,6 +7,8 @@ BIGBEE: The New Standard for Retrofit Intercoms
 
 Zero-Drain. No-Cloud. Evolving The Legacy.
 
+This repository is currently public for Technical Disclosure and Prior Art purposes only.
+The codebase is under activ development.
 
 1. PITCH (SUMMARY OF INNOVATION)
 
