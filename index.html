@@ -3,9 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BIGBEE | Evolving The Legacy</title>
-    <meta name="description" content="BIGBEE: The first Zero-Drain, No-Cloud, Universal Retrofit Intercom. Open Hardware Project.">
     
+    <title>BIGBEE | The No-Cloud Smart Intercom Retrofit</title>
+    <meta name="description" content="BIGBEE is the first Zero-Drain, No-Cloud, Universal Retrofit for analog intercoms (4+n). Features ESP32-S3, Telegram VoIP, Zigbee Mesh, and 7-month battery life. Open Hardware CERN-OHL-S.">
+    <meta name="keywords" content="smart intercom, retrofit 4+n, esp32 intercom, urmet smart, no cloud home automation, zero drain, zigbee bridge, telegram voip, open hardware">
+    <meta name="author" content="BIGBEE Project">
+    <meta name="robots" content="index, follow">
+    
+    <meta property="og:title" content="BIGBEE: Evolving The Legacy">
+    <meta property="og:description" content="The first Zero-Drain, No-Cloud Intercom. Upgrade your old Urmet 1131 today.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://bigbee-project.org">
+
     <style>
         :root {
             --bg-color: #000000;
@@ -16,11 +25,7 @@
             --spacing: 20px;
         }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
 
         body {
             background-color: var(--bg-color);
@@ -36,7 +41,7 @@
 
         .container {
             width: 100%;
-            max-width: 900px;
+            max-width: 1000px; /* Allargato per far stare le card */
             display: flex;
             flex-direction: column;
             gap: 40px;
@@ -52,7 +57,7 @@
 
         .ascii-art {
             font-weight: bold;
-            color: #ffffff;
+            color: #00ff41; /* Torniamo al verde hacker per il logo, spacca di più */
             white-space: pre;
             overflow-x: auto;
             font-size: 14px;
@@ -61,29 +66,31 @@
             text-align: left;
         }
 
-        .hero {
-            text-align: center;
-            padding: 20px 0;
-        }
+        .hero { text-align: center; padding: 20px 0; }
 
         h1 {
-            font-size: 2rem;
+            font-size: 1.8rem;
             font-weight: normal;
             letter-spacing: -1px;
             margin-bottom: 15px;
             color: #fff;
         }
+        
+        /* Animazione cursore per lo stato */
+        .blink { animation: blinker 1s linear infinite; }
+        @keyframes blinker { 50% { opacity: 0; } }
 
         .lead {
             font-size: 1.1rem;
             color: var(--text-dim);
-            max-width: 600px;
+            max-width: 700px;
             margin: 0 auto;
         }
 
+        /* GRIGLIA SPECIFICHE */
         .specs-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Card un po' più larghe */
             gap: 20px;
             border-top: 1px solid var(--border);
             padding-top: 40px;
@@ -91,36 +98,30 @@
 
         .spec-card {
             border: 1px solid var(--border);
-            padding: 20px;
-            transition: border-color 0.3s ease;
+            padding: 25px;
+            transition: all 0.3s ease;
+            background: rgba(255,255,255,0.02);
         }
 
         .spec-card:hover {
             border-color: var(--text-main);
+            transform: translateY(-2px);
+            background: rgba(255,255,255,0.05);
         }
 
         .label {
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             text-transform: uppercase;
             letter-spacing: 1px;
-            color: var(--text-dim);
+            color: #00ff41; /* Accent verde per le label */
             display: block;
             margin-bottom: 10px;
         }
 
-        .value {
-            font-size: 1.1rem;
-            font-weight: bold;
-            color: #fff;
-        }
+        .value { font-size: 1.2rem; font-weight: bold; color: #fff; margin-bottom: 5px; }
+        .detail { display: block; font-size: 0.85rem; color: var(--text-dim); line-height: 1.4; }
 
-        .detail {
-            display: block;
-            font-size: 0.85rem;
-            color: var(--text-dim);
-            margin-top: 5px;
-        }
-
+        /* PULSANTI */
         .actions {
             display: flex;
             justify-content: center;
@@ -141,21 +142,10 @@
             transition: all 0.3s ease;
         }
 
-        .btn:hover {
-            background-color: var(--text-main);
-            color: var(--bg-color);
-        }
+        .btn:hover { background-color: var(--text-main); color: var(--bg-color); }
 
-        .btn.secondary {
-            border-color: var(--border);
-            color: var(--text-dim);
-        }
-
-        .btn.secondary:hover {
-            border-color: var(--text-dim);
-            color: var(--text-main);
-            background: transparent;
-        }
+        .btn.secondary { border-color: var(--border); color: var(--text-dim); }
+        .btn.secondary:hover { border-color: var(--text-dim); color: var(--text-main); background: transparent; }
 
         footer {
             margin-top: auto;
@@ -183,17 +173,11 @@
             letter-spacing: 1px;
             transition: all 0.3s;
         }
-
-        .badge:hover {
-            border-color: #666;
-            color: #aaa;
-        }
+        .badge:hover { border-color: #666; color: #aaa; }
 
         @media (max-width: 600px) {
             .ascii-art { font-size: 9px; }
-            h1 { font-size: 1.5rem; }
-            .actions { flex-direction: column; }
-            .btn { width: 100%; text-align: center; }
+            h1 { font-size: 1.4rem; }
         }
     </style>
 </head>
@@ -210,7 +194,7 @@
         </div>
 
         <div class="hero">
-            <h1>SYSTEM STATUS: ONLINE</h1>
+            <h1>PROJECT STATUS: ACTIVE DEVELOPMENT <span class="blink">_</span></h1>
             <p class="lead">
                 The first Zero-Drain, No-Cloud, Universal Retrofit Intercom.<br>
                 Designed to last decades, not months.
@@ -227,37 +211,37 @@
             <div class="spec-card">
                 <span class="label">Power Architecture</span>
                 <div class="value">True UPS / Zero-Drain</div>
-                <span class="detail">Physical battery bypass & 7+ months autonomy.</span>
+                <span class="detail">Physical battery bypass relay & 7+ months autonomy. No Vampire Drain.</span>
             </div>
 
             <div class="spec-card">
-                <span class="label">Privacy & Data</span>
-                <div class="value">100% Local / No Cloud</div>
-                <span class="detail">Your home, your data. Offline-First logic.</span>
+                <span class="label">Communication</span>
+                <div class="value">Telegram VoIP & Push</div>
+                <span class="detail">Receive calls and audio on your phone via Telegram API. Opt-in only to save battery.</span>
             </div>
 
             <div class="spec-card">
-                <span class="label">Core System</span>
-                <div class="value">ESP32-S3</div>
-                <span class="detail">Zigbee Mesh Ready & Multi-Protocol.</span>
+                <span class="label">User Interface</span>
+                <div class="value">PTT / No-Handset</div>
+                <span class="detail">Modern Push-To-Talk speakerphone. Replaces the old handset with a sleek, hands-free experience.</span>
+            </div>
+
+            <div class="spec-card">
+                <span class="label">Connectivity</span>
+                <div class="value">Zigbee / MQTT Ready</div>
+                <span class="detail">Designed to act as a Mesh Node or Border Router. The gateway to your local Smart Home.</span>
             </div>
 
             <div class="spec-card">
                 <span class="label">Configuration</span>
-                <div class="value">Magic OTG</div>
-                <span class="detail">App-free setup via USB Mass Storage.</span>
+                <div class="value">Magic OTG 2.0</div>
+                <span class="detail">App-free setup via USB Mass Storage and Browser API. 100% Offline & Air-Gapped.</span>
             </div>
 
             <div class="spec-card">
-                <span class="label">License</span>
-                <div class="value">CERN-OHL-S v2</div>
-                <span class="detail">Strongly Reciprocal Open Hardware.</span>
-            </div>
-
-            <div class="spec-card">
-                <span class="label">Compatibility</span>
-                <div class="value">Universal 4+n</div>
-                <span class="detail">10-Pin Header + Jumper Configuration.</span>
+                <span class="label">Privacy</span>
+                <div class="value">100% Local Logic</div>
+                <span class="detail">No external cloud dependency. Your data stays in your house. Works even without Internet.</span>
             </div>
 
         </div>
