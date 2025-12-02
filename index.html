@@ -4,12 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
+    <!-- SEO & METADATA BLINDATI -->
     <title>BIGBEE | The No-Cloud Smart Intercom Retrofit</title>
     <meta name="description" content="BIGBEE is the first Zero-Drain, No-Cloud, Universal Retrofit for analog intercoms (4+n). Features ESP32-S3, Telegram VoIP, Zigbee Mesh, and 7-month battery life. Open Hardware CERN-OHL-S.">
     <meta name="keywords" content="smart intercom, retrofit 4+n, esp32 intercom, urmet smart, no cloud home automation, zero drain, zigbee bridge, telegram voip, open hardware">
     <meta name="author" content="BIGBEE Project">
     <meta name="robots" content="index, follow">
     
+    <!-- Open Graph -->
     <meta property="og:title" content="BIGBEE: Evolving The Legacy">
     <meta property="og:description" content="The first Zero-Drain, No-Cloud Intercom. Upgrade your old Urmet 1131 today.">
     <meta property="og:type" content="website">
@@ -22,6 +24,7 @@
             --text-dim: #888888;
             --border: #333333;
             --accent: #ffffff;
+            --progress-bar: #00ff41; /* Verde Hacker per la barra */
             --spacing: 20px;
         }
 
@@ -41,12 +44,34 @@
 
         .container {
             width: 100%;
-            max-width: 1000px; /* Allargato per far stare le card */
+            max-width: 1000px;
             display: flex;
             flex-direction: column;
             gap: 40px;
+            position: relative;
         }
 
+        /* LANGUAGE SWITCHER */
+        .lang-switch {
+            position: absolute;
+            top: 0;
+            right: 0;
+            font-size: 0.8rem;
+            color: var(--text-dim);
+        }
+        .lang-btn {
+            cursor: pointer;
+            color: var(--text-dim);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .lang-btn:hover, .lang-btn.active {
+            color: var(--text-main);
+            font-weight: bold;
+            text-decoration: underline;
+        }
+
+        /* LOGO SECTION */
         .logo-container {
             border-bottom: 1px solid var(--border);
             padding-bottom: 40px;
@@ -57,7 +82,7 @@
 
         .ascii-art {
             font-weight: bold;
-            color: #00ff41; /* Torniamo al verde hacker per il logo, spacca di più */
+            color: #ffffff; /* LOGO BIANCO RICHIESTO */
             white-space: pre;
             overflow-x: auto;
             font-size: 14px;
@@ -66,6 +91,7 @@
             text-align: left;
         }
 
+        /* HERO & STATUS */
         .hero { text-align: center; padding: 20px 0; }
 
         h1 {
@@ -76,9 +102,38 @@
             color: #fff;
         }
         
-        /* Animazione cursore per lo stato */
         .blink { animation: blinker 1s linear infinite; }
         @keyframes blinker { 50% { opacity: 0; } }
+
+        /* PROGRESS BAR */
+        .progress-container {
+            width: 100%;
+            max-width: 400px;
+            margin: 10px auto 20px auto;
+            text-align: center;
+        }
+        .progress-label {
+            font-size: 0.75rem;
+            color: var(--text-dim);
+            margin-bottom: 5px;
+            display: block;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .progress-track {
+            background: #1a1a1a;
+            height: 6px;
+            border-radius: 3px;
+            overflow: hidden;
+            border: 1px solid #333;
+        }
+        .progress-fill {
+            background: var(--progress-bar);
+            height: 100%;
+            width: 0%; /* Valore iniziale, cambiato inline nell'HTML */
+            box-shadow: 0 0 10px rgba(0, 255, 65, 0.5);
+            transition: width 1s ease-in-out;
+        }
 
         .lead {
             font-size: 1.1rem;
@@ -87,10 +142,10 @@
             margin: 0 auto;
         }
 
-        /* GRIGLIA SPECIFICHE */
+        /* SPECS GRID */
         .specs-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Card un po' più larghe */
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 20px;
             border-top: 1px solid var(--border);
             padding-top: 40px;
@@ -102,7 +157,6 @@
             transition: all 0.3s ease;
             background: rgba(255,255,255,0.02);
         }
-
         .spec-card:hover {
             border-color: var(--text-main);
             transform: translateY(-2px);
@@ -113,7 +167,7 @@
             font-size: 0.7rem;
             text-transform: uppercase;
             letter-spacing: 1px;
-            color: #00ff41; /* Accent verde per le label */
+            color: #00ff41;
             display: block;
             margin-bottom: 10px;
         }
@@ -121,7 +175,7 @@
         .value { font-size: 1.2rem; font-weight: bold; color: #fff; margin-bottom: 5px; }
         .detail { display: block; font-size: 0.85rem; color: var(--text-dim); line-height: 1.4; }
 
-        /* PULSANTI */
+        /* ACTIONS */
         .actions {
             display: flex;
             justify-content: center;
@@ -140,8 +194,8 @@
             font-weight: bold;
             font-size: 0.9rem;
             transition: all 0.3s ease;
+            cursor: pointer;
         }
-
         .btn:hover { background-color: var(--text-main); color: var(--bg-color); }
 
         .btn.secondary { border-color: var(--border); color: var(--text-dim); }
@@ -163,7 +217,6 @@
             gap: 10px;
             flex-wrap: wrap;
         }
-
         .badge {
             border: 1px solid #333;
             color: #555;
@@ -175,6 +228,10 @@
         }
         .badge:hover { border-color: #666; color: #aaa; }
 
+        /* UTILITY: Language Hiding */
+        .lang-en, .lang-it { display: none; }
+        /* Default visibile via JS o CSS fallback */
+        
         @media (max-width: 600px) {
             .ascii-art { font-size: 9px; }
             h1 { font-size: 1.4rem; }
@@ -185,6 +242,13 @@
 
     <div class="container">
         
+        <!-- LANGUAGE SWITCHER -->
+        <div class="lang-switch">
+            <span class="lang-btn active" onclick="setLang('en')">EN</span> | 
+            <span class="lang-btn" onclick="setLang('it')">IT</span>
+        </div>
+
+        <!-- LOGO (WHITE) -->
         <div class="logo-container">
             <div class="ascii-art">
 ██▀▀█ █ █▀▀ █▀▀█ █▀▀ █▀▀
@@ -193,64 +257,102 @@
 ▄▄ EVOLVING THE LEGACY ▄▄</div>
         </div>
 
+        <!-- HERO -->
         <div class="hero">
             <h1>PROJECT STATUS: ACTIVE DEVELOPMENT <span class="blink">_</span></h1>
-            <p class="lead">
+            
+            <!-- PROGRESS BAR (MODIFICA LA % QUI SOTTO) -->
+            <div class="progress-container">
+                <span class="progress-label">System Completion: 10%</span>
+                <div class="progress-track">
+                    <div class="progress-fill" style="width: 10%;"></div>
+                </div>
+            </div>
+
+            <p class="lead lang-en" style="display:block;">
                 The first Zero-Drain, No-Cloud, Universal Retrofit Intercom.<br>
                 Designed to last decades, not months.
             </p>
+            <p class="lead lang-it">
+                Il primo Citofono Retrofit Universale Zero-Drain e No-Cloud.<br>
+                Progettato per durare decenni, non mesi.
+            </p>
 
             <div class="actions">
-                <a href="https://github.com/bigbee-project/BIGBEE-Open-Source-Intercom" class="btn">View Source Code</a>
-                <a href="https://github.com/bigbee-project/BIGBEE-Open-Source-Intercom/blob/main/README.md" class="btn secondary">Read Manifesto</a>
+                <a href="https://github.com/bigbee-project/BIGBEE-Open-Source-Intercom" class="btn">
+                    <span class="lang-en" style="display:inline;">View Source Code</span>
+                    <span class="lang-it">Vedi Codice Sorgente</span>
+                </a>
+                <a href="https://github.com/bigbee-project/BIGBEE-Open-Source-Intercom/blob/main/README.md" class="btn secondary">
+                    <span class="lang-en" style="display:inline;">Read Manifesto</span>
+                    <span class="lang-it">Leggi il Manifesto</span>
+                </a>
             </div>
         </div>
 
+        <!-- SPECS GRID -->
         <div class="specs-grid">
             
             <div class="spec-card">
-                <span class="label">Power Architecture</span>
+                <span class="label lang-en" style="display:block;">Power Architecture</span>
+                <span class="label lang-it">Alimentazione</span>
                 <div class="value">True UPS / Zero-Drain</div>
-                <span class="detail">Physical battery bypass relay & 7+ months autonomy. No Vampire Drain.</span>
+                <span class="detail lang-en" style="display:block;">Physical battery bypass relay & 7+ months autonomy. No Vampire Drain.</span>
+                <span class="detail lang-it">Bypass fisico della batteria e autonomia oltre 7 mesi. Zero consumi passivi.</span>
             </div>
 
             <div class="spec-card">
-                <span class="label">Communication</span>
+                <span class="label lang-en" style="display:block;">Communication</span>
+                <span class="label lang-it">Comunicazione</span>
                 <div class="value">Telegram VoIP & Push</div>
-                <span class="detail">Receive calls and audio on your phone via Telegram API. Opt-in only to save battery.</span>
+                <span class="detail lang-en" style="display:block;">Receive calls and audio on your phone via Telegram API. Opt-in only to save battery.</span>
+                <span class="detail lang-it">Ricevi chiamate e audio via Telegram API. Connessione su richiesta per risparmiare batteria.</span>
             </div>
 
             <div class="spec-card">
-                <span class="label">User Interface</span>
+                <span class="label lang-en" style="display:block;">User Interface</span>
+                <span class="label lang-it">Interfaccia Utente</span>
                 <div class="value">PTT / No-Handset</div>
-                <span class="detail">Modern Push-To-Talk speakerphone. Replaces the old handset with a sleek, hands-free experience.</span>
+                <span class="detail lang-en" style="display:block;">Modern Push-To-Talk speakerphone. Replaces the old handset with a sleek, hands-free experience.</span>
+                <span class="detail lang-it">Vivavoce Push-To-Talk moderno. Sostituisce la vecchia cornetta con un'esperienza hands-free.</span>
             </div>
 
             <div class="spec-card">
-                <span class="label">Connectivity</span>
+                <span class="label lang-en" style="display:block;">Connectivity</span>
+                <span class="label lang-it">Connettività</span>
                 <div class="value">Zigbee / MQTT Ready</div>
-                <span class="detail">Designed to act as a Mesh Node or Border Router. The gateway to your local Smart Home.</span>
+                <span class="detail lang-en" style="display:block;">Designed to act as a Mesh Node or Border Router. The gateway to your local Smart Home.</span>
+                <span class="detail lang-it">Progettato come Nodo Mesh o Border Router. Il gateway per la tua Smart Home locale.</span>
             </div>
 
             <div class="spec-card">
-                <span class="label">Configuration</span>
+                <span class="label lang-en" style="display:block;">Configuration</span>
+                <span class="label lang-it">Configurazione</span>
                 <div class="value">Magic OTG 2.0</div>
-                <span class="detail">App-free setup via USB Mass Storage and Browser API. 100% Offline & Air-Gapped.</span>
+                <span class="detail lang-en" style="display:block;">App-free setup via USB Mass Storage and Browser API. 100% Offline & Air-Gapped.</span>
+                <span class="detail lang-it">Setup senza App via memoria USB e Browser. 100% Offline e Air-Gapped.</span>
             </div>
 
             <div class="spec-card">
-                <span class="label">Privacy</span>
+                <span class="label lang-en" style="display:block;">Privacy</span>
+                <span class="label lang-it">Privacy</span>
                 <div class="value">100% Local Logic</div>
-                <span class="detail">No external cloud dependency. Your data stays in your house. Works even without Internet.</span>
+                <span class="detail lang-en" style="display:block;">No external cloud dependency. Your data stays in your house. Works even without Internet.</span>
+                <span class="detail lang-it">Nessuna dipendenza dal cloud. I tuoi dati restano in casa. Funziona anche senza Internet.</span>
             </div>
 
         </div>
 
+        <!-- FOOTER -->
         <footer>
             <p>ESTABLISHED: NOV 2025 | STATUS: PRIOR ART RECORDED</p>
-            <p style="margin-top: 10px;">
+            <p style="margin-top: 10px;" class="lang-en" style="display:block;">
                 Documentation & Schematics released under CERN-OHL-S v2.<br>
                 Firmware released under GNU GPL v3.
+            </p>
+            <p style="margin-top: 10px;" class="lang-it">
+                Documentazione e Schemi rilasciati sotto licenza CERN-OHL-S v2.<br>
+                Firmware rilasciato sotto licenza GNU GPL v3.
             </p>
 
             <div class="compliance-badges">
@@ -262,6 +364,32 @@
         </footer>
 
     </div>
+
+    <script>
+        function setLang(lang) {
+            // Nasconde tutto
+            document.querySelectorAll('.lang-en, .lang-it').forEach(el => {
+                el.style.display = 'none';
+            });
+            
+            // Mostra solo la lingua scelta
+            document.querySelectorAll('.lang-' + lang).forEach(el => {
+                // Se è uno span dentro un pulsante, usa inline, altrimenti block
+                if(el.tagName === 'SPAN') {
+                    el.style.display = 'inline';
+                } else {
+                    el.style.display = 'block';
+                }
+            });
+
+            // Aggiorna stile pulsanti switch
+            document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelector('.lang-btn[onclick="setLang(\'' + lang + '\')"]').classList.add('active');
+        }
+
+        // Default Language on Load: English
+        setLang('en');
+    </script>
 
 </body>
 </html>
