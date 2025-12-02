@@ -81,3 +81,12 @@ The associated firmware is released under license GNU GPL v3.
 
 Architecture Definition Date: November 30, 2025
 Contact: project.bigbee@gmail.com
+
+### 🔐 LEGAL DEPOSIT & SECURE TIMESTAMP
+The Master Technical Disclosure (PDF) containing full schematics and source code structure has been timestamped via **PEC (Certified Email)** to establish incontestable Prior Art.
+
+**SHA-256 HASH OF THE DEPOSITED FILE:**
+`9396d5be6598b9766cd52411cb79d3a85c1cc8e3e17776618e5469ff288f179d`
+
+*(This hash creates a mathematical link between this public repository and the certified legal document).*
+
