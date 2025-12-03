@@ -76,7 +76,7 @@ Authorship and temporal priority (Prior Art) are claimed for the following imple
 
 ---
 
-## 🌐 THE BIGBEE ECOSYSTEM (Roadmap)
+## THE BIGBEE ECOSYSTEM (Roadmap)
 
 BIGBEE is not just a device; it's a philosophy of Local, Robust, and Private home automation.
 The **Intercom** is just the first node of the Hive.
