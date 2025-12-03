@@ -74,6 +74,23 @@ Authorship and temporal priority (Prior Art) are claimed for the following imple
 5.  "Over-Spec" Construction: Systematic component oversizing for thermal stability and decennial durability.
 6.  Hybrid Multi-Protocol Architecture (Future Embodiment): Extension to include IEEE 802.15.4 (Zigbee, Thread, Matter) connectivity.
 
+---
+
+## 🌐 THE BIGBEE ECOSYSTEM (Roadmap)
+
+BIGBEE is not just a device; it's a philosophy of Local, Robust, and Private home automation.
+The **Intercom** is just the first node of the Hive.
+
+| PROJECT NODE | FUNCTION | STATUS |
+| :--- | :--- | :--- |
+| ** BIGBEE INTERCOM** | **Entry Point / Security** | **🟢 ACTIVE DEV** |
+| ** BIGBEE HIVE** | **Local Core / MQTT Hub** | 🟡 **R&D / CONCEPT** |
+| ** BIGBEE CLIMA** | **HVAC / Climate Control** | 🔴 *CLASSIFIED* |
+| ** BIGBEE SENSE** | **Presence / Multi-Sensor** | 🔴 *CLASSIFIED* |
+
+*The ecosystem shares the same DNA: Zero-Cloud, 100% Privacy, Industrial Reliability.*
+
+
 6. LICENSE AND TIMESTAMPS
 
 This hardware project is released under license CERN OHL-S v2.
