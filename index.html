@@ -3,20 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    
+    <title>BIGBEE | Evolving The Legacy</title>
+    <meta name="description" content="BIGBEE: The first Zero-Drain, No-Cloud, Universal Retrofit Intercom. Open Hardware Project.">
+    <meta name="keywords" content="smart intercom, retrofit 4+n, esp32 intercom, urmet smart, no cloud, zero drain, zigbee bridge, telegram voip, open hardware">
+    <meta name="author" content="BIGBEE Project">
+    <meta name="robots" content="index, follow">
+    
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
     <meta http-equiv="Pragma" content="no-cache" />
     <meta http-equiv="Expires" content="0" />
 
-    
-    <!-- SEO & METADATA BLINDATI -->
-    <title>BIGBEE | The No-Cloud Smart Intercom Retrofit</title>
-    <meta name="description" content="BIGBEE is the first Zero-Drain, No-Cloud, Universal Retrofit for analog intercoms (4+n). Features ESP32-S3, Telegram VoIP, Zigbee Mesh, and 7-month battery life. Open Hardware CERN-OHL-S.">
-    <meta name="keywords" content="smart intercom, retrofit 4+n, esp32 intercom, urmet smart, no cloud home automation, zero drain, zigbee bridge, telegram voip, open hardware">
-    <meta name="author" content="BIGBEE Project">
-    <meta name="robots" content="index, follow">
-    
-    <!-- Open Graph -->
     <meta property="og:title" content="BIGBEE: Evolving The Legacy">
     <meta property="og:description" content="The first Zero-Drain, No-Cloud Intercom. Upgrade your old Urmet 1131 today.">
     <meta property="og:type" content="website">
@@ -29,7 +26,10 @@
             --text-dim: #888888;
             --border: #333333;
             --accent: #ffffff;
-            --progress-bar: #00ff41; /* Verde Hacker per la barra */
+            --progress-bar: #00ff41;
+            --status-green: #00ff41;
+            --status-yellow: #ffd700;
+            --status-red: #ff3333;
             --spacing: 20px;
         }
 
@@ -87,7 +87,7 @@
 
         .ascii-art {
             font-weight: bold;
-            color: #ffffff; /* LOGO BIANCO RICHIESTO */
+            color: #ffffff;
             white-space: pre;
             overflow-x: auto;
             font-size: 14px;
@@ -135,7 +135,7 @@
         .progress-fill {
             background: var(--progress-bar);
             height: 100%;
-            width: 0%; /* Valore iniziale, cambiato inline nell'HTML */
+            width: 0%;
             box-shadow: 0 0 10px rgba(0, 255, 65, 0.5);
             transition: width 1s ease-in-out;
         }
@@ -179,6 +179,43 @@
 
         .value { font-size: 1.2rem; font-weight: bold; color: #fff; margin-bottom: 5px; }
         .detail { display: block; font-size: 0.85rem; color: var(--text-dim); line-height: 1.4; }
+
+        /* ECOSYSTEM SECTION */
+        .ecosystem-section {
+            margin-top: 60px;
+            border-top: 1px dashed var(--border);
+            padding-top: 40px;
+        }
+        .eco-title {
+            font-size: 1rem;
+            color: var(--text-main);
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-align: center;
+        }
+        .eco-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+        .eco-node {
+            background: rgba(255,255,255,0.03);
+            padding: 15px;
+            border-left: 3px solid var(--border);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .eco-node.active { border-left-color: var(--status-green); }
+        .eco-node.dev { border-left-color: var(--status-yellow); }
+        .eco-node.locked { border-left-color: var(--status-red); opacity: 0.5; }
+
+        .node-name { font-weight: bold; font-size: 0.9rem; display: block; letter-spacing: 1px;}
+        .node-status { font-size: 0.7rem; text-transform: uppercase; margin-top: 5px; display: block;}
+        .active .node-status { color: var(--status-green); }
+        .dev .node-status { color: var(--status-yellow); }
+        .locked .node-status { color: var(--status-red); }
 
         /* ACTIONS */
         .actions {
@@ -233,9 +270,7 @@
         }
         .badge:hover { border-color: #666; color: #aaa; }
 
-        /* UTILITY: Language Hiding */
         .lang-en, .lang-it { display: none; }
-        /* Default visibile via JS o CSS fallback */
         
         @media (max-width: 600px) {
             .ascii-art { font-size: 9px; }
@@ -247,13 +282,11 @@
 
     <div class="container">
         
-        <!-- LANGUAGE SWITCHER -->
         <div class="lang-switch">
             <span class="lang-btn active" onclick="setLang('en')">EN</span> | 
             <span class="lang-btn" onclick="setLang('it')">IT</span>
         </div>
 
-        <!-- LOGO (WHITE) -->
         <div class="logo-container">
             <div class="ascii-art">
 ██▀▀█ █ █▀▀ █▀▀█ █▀▀ █▀▀
@@ -262,11 +295,9 @@
 ▄▄ EVOLVING THE LEGACY ▄▄</div>
         </div>
 
-        <!-- HERO -->
         <div class="hero">
             <h1>PROJECT STATUS: ACTIVE DEVELOPMENT <span class="blink">_</span></h1>
             
-            <!-- PROGRESS BAR (MODIFICA LA % QUI SOTTO) -->
             <div class="progress-container">
                 <span class="progress-label">System Completion: 10%</span>
                 <div class="progress-track">
@@ -295,7 +326,6 @@
             </div>
         </div>
 
-        <!-- SPECS GRID -->
         <div class="specs-grid">
             
             <div class="spec-card">
@@ -348,7 +378,48 @@
 
         </div>
 
-        <!-- FOOTER -->
+        <div class="ecosystem-section">
+            <h2 class="eco-title">
+                <span class="lang-en" style="display:block;">System Roadmap</span>
+                <span class="lang-it">Roadmap di Sistema</span>
+            </h2>
+            <div class="eco-grid">
+                
+                <div class="eco-node active">
+                    <span class="node-name">BIGBEE INTERCOM</span>
+                    <span class="node-status">
+                         <span class="lang-en" style="display:inline;">Entry Point • Active</span>
+                         <span class="lang-it">Ingresso • Attivo</span>
+                    </span>
+                </div>
+
+                <div class="eco-node dev">
+                    <span class="node-name">BIGBEE HIVE</span>
+                    <span class="node-status">
+                        <span class="lang-en" style="display:inline;">Local Hub • R&D</span>
+                        <span class="lang-it">Hub Locale • Sviluppo</span>
+                    </span>
+                </div>
+
+                <div class="eco-node locked">
+                    <span class="node-name">BIGBEE CLIMA</span>
+                    <span class="node-status">
+                        <span class="lang-en" style="display:inline;">Climate • Classified</span>
+                        <span class="lang-it">Clima • Riservato</span>
+                    </span>
+                </div>
+
+                <div class="eco-node locked">
+                    <span class="node-name">BIGBEE SENSE</span>
+                    <span class="node-status">
+                        <span class="lang-en" style="display:inline;">Presence • Classified</span>
+                        <span class="lang-it">Presenza • Riservato</span>
+                    </span>
+                </div>
+
+            </div>
+        </div>
+
         <footer>
             <p>ESTABLISHED: NOV 2025 | STATUS: PRIOR ART RECORDED</p>
             <p style="margin-top: 10px;" class="lang-en" style="display:block;">
@@ -372,14 +443,11 @@
 
     <script>
         function setLang(lang) {
-            // Nasconde tutto
             document.querySelectorAll('.lang-en, .lang-it').forEach(el => {
                 el.style.display = 'none';
             });
             
-            // Mostra solo la lingua scelta
             document.querySelectorAll('.lang-' + lang).forEach(el => {
-                // Se è uno span dentro un pulsante, usa inline, altrimenti block
                 if(el.tagName === 'SPAN') {
                     el.style.display = 'inline';
                 } else {
@@ -387,12 +455,10 @@
                 }
             });
 
-            // Aggiorna stile pulsanti switch
             document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
             document.querySelector('.lang-btn[onclick="setLang(\'' + lang + '\')"]').classList.add('active');
         }
 
-        // Default Language on Load: English
         setLang('en');
     </script>
 
