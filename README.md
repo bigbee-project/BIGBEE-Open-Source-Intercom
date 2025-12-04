@@ -1,109 +1,93 @@
-
-
-```
+<div align="center">
+<pre>
 ██▀▀█ █ █▀▀ █▀▀█ █▀▀ █▀▀
 ██▀▀▄ █ █ █ █▀▀▄ █▀▀ █▀▀
 ██▄▄█_█_▀▀▀_██▄█_█▄▄_█▄▄
 ▄▄ EVOLVING THE LEGACY ▄▄
-```
+</pre>
+</div>
 
-BIGBEE: The New Standard for Retrofit Intercoms
+# BIGBEE INTERCOM | SYSTEM SPECIFICATION
 
-Zero-Drain. No-Cloud. Evolving The Legacy.
-
-This repository is currently public for Technical Disclosure and Prior Art purposes only.
-The codebase is under activ development.
-
-1. PITCH (SUMMARY OF INNOVATION)
-
-BIGBEE is a complete replacement device for analog intercoms (4+n standard) that introduces a new paradigm: it combines contextual home automation, melodic audio, extended autonomy (>7 months), and total privacy (No-Cloud), powered by a proprietary "Zero-Drain" architecture with physical power bypass.
-
-2. FIELD OF APPLICATION
-
-This specification describes a method for the non-invasive modernization of existing intercom systems. The system replaces the original appliance by introducing a "low-cost invisible brain" (based on standard ESP32 microcontroller) that democratizes access to advanced home automation without requiring expensive condominium infrastructure upgrades.
-
-3. TECHNICAL PROBLEM SOLVED
-
-Current systems suffer from planned battery obsolescence, dependence on complex pairing procedures via App, and inoperability without network. BIGBEE solves these problems through an "Offline-First" logic, energy management with physical cell exclusion, and a universal file-system-based configuration.
-
-4. DETAILED ARCHITECTURE DESCRIPTION
-
-A. "True UPS" Energy Management with Physical Bypass
-
-The architecture provides dual source management:
-
-1.  Battery Mode (Zero-Drain): Monitoring activated only once every 24h.
-2.  Mains/Powerbank Mode (Battery Saver): connecting an external source (USB-C), the system switches a power relay that physically excludes the batteries from the load circuit. The device runs exclusively on external power, preserving cell chemistry (no micro-cycles) and ensuring a battery life comparable to their shelf-life (years).
-
-B. "Melodic High-Fidelity" Audio
-
-1.  WAV on SD: Customizable melodic ringtones on local memory.
-2.  PTT Speakerphone: "Push-To-Talk" interface without handset, with digital I2S amplification.
-
-C. Contextual Automation Logic
-
-1.  Anti-Paranoia: Software filter that ignores compulsive ringing.
-2.  Smart Access: Silent automatic opening on long press.
-3.  Security Light: Automatic stair light activation on floor bell call (CP).
-4.  Maintenance Mode: Keeps stair lights active for extended operations.
-
-D. "Magic OTG" Configuration (Air-Gapped & App-Free)
-
-The device eliminates the need for temporary Access Points or proprietary Apps through a bidirectional procedure on USB-A Host port:
-
-1.  Automatic Export: Upon insertion of an empty USB stick, BIGBEE creates a folder structure containing current audio files (.wav) and a self-contained management page (setup.html).
-2.  Offline Configuration: The user modifies parameters (WiFi, Volumes, Timer) via browser by opening the setup.html file.
-3.  Import & Flash: Upon reinsertion, BIGBEE validates the JSON integrity and applies the configuration.
-
-E. "Out-of-the-Box" Operability (Total Offline-First)
-
-The system guarantees full operability of all core functions immediately upon first power-up, without any Wi-Fi configuration. Network connectivity is treated as a purely accessory layer needed only for NTP (Time Healing) and remote functions (VoIP/MQTT).
-
-F. HMI "Single-Point" Interface
-
-Complex feedback managed through a single RGB LED (Color Code) and synthesized Audio Tones, for a minimalist, low-power design.
-
-5. INNOVATION CLAIMS (TECHNICAL CLAIMS)
-
-Authorship and temporal priority (Prior Art) are claimed for the following implementations:
-
-1.  "Battery Preservation Bypass" Method: Circuit architecture using a changeover relay to power the load directly from the external USB source, galvanically isolating batteries to zero micro-cycle wear.
-2.  "Magic OTG" Configuration System: Setup method utilizing dynamic generation of a static web interface (.html) on removable USB mass storage.
-3.  Contextual Automation: Simultaneous Door+Light activation and Light activation on Floor Bell.
-4.  Hybrid "Headless" Interface: Combination of physical buttons for quick adjustments and USB configuration for deep settings.
-5.  "Over-Spec" Construction: Systematic component oversizing for thermal stability and decennial durability.
-6.  Hybrid Multi-Protocol Architecture (Future Embodiment): Extension to include IEEE 802.15.4 (Zigbee, Thread, Matter) connectivity.
+**Current Status:** ACTIVE DEVELOPMENT
+**Architecture Revision:** 97.0 (Apollo Release)
+**License:** CERN-OHL-S v2 (Hardware) / GNU GPL v3 (Firmware)
 
 ---
 
-## THE BIGBEE ECOSYSTEM (Roadmap)
+## 1. EXECUTIVE SUMMARY
 
-BIGBEE is not just a device; it's a philosophy of Local, Robust, and Private home automation.
-The **Intercom** is just the first node of the Hive.
+BIGBEE is a retrofit engineered device designed to modernize analog intercom systems (4+n standard) without reliance on cloud infrastructure or subscription services. It replaces the traditional handset with a high-performance, privacy-focused smart node based on the ESP32-S3 architecture.
 
-| PROJECT NODE | FUNCTION | STATUS |
+The project introduces a paradigm shift in retrofitting by solving the three historical constraints of the sector: energy autonomy, installation complexity, and data privacy.
+
+## 2. CORE TECHNOLOGY: APOLLO INTERLOCK
+
+**NOTICE OF TECHNICAL DISCLOSURE (PRIOR ART)**
+This repository documents a proprietary power management topology designated as "Apollo Interlock".
+
+### The Problem: The Power Loop Paradox
+In self-powered OTG (On-The-Go) devices, a single USB-C port cannot typically serve as both a Power Input (Charging) and Power Output (Data transfer) without complex microcontroller intervention or risk of electrical back-feeding.
+
+### The Solution: Hardware Priority Arbitration
+BIGBEE implements a deterministic, hardware-layer gatekeeping logic using a **Q_GUARD / Q_KILL topology**.
+This circuit physically prioritizes battery protection over USB enumeration. It creates an immediate, physics-based interlock that prevents the relay coil from activating if the device is self-generating the rail voltage. This ensures failsafe operation of a **Single-Port Interface** for both high-current charging and mass-storage configuration, eliminating the need for secondary service ports or mechanical jumpers.
+
+## 3. SYSTEM ARCHITECTURE
+
+### A. Zero-Drain Power Management
+The device operates on a "True UPS" logic.
+* **Idle State:** The system runs on Li-Ion cells with a quiescent current below 10µA.
+* **Active State:** Upon external power connection (USB-C), a mechanical relay physically bypasses the battery, powering the load directly from the mains. This preserves cell chemistry by eliminating micro-cycles.
+
+### B. High-Definition Audio Pipeline
+* **Input:** MEMS I2S Microphone (INMP441) for digital acquisition.
+* **Output:** Class-D I2S Amplifier (MAX98357A) with 12dB hardware gain.
+* **Processing:** Fully digital signal chain, immune to analog line noise and GSM interference.
+
+### C. Magic OTG Configuration (Air-Gapped)
+BIGBEE eliminates the need for temporary WiFi Access Points or Bluetooth pairing.
+* **Method:** The device emulates a Mass Storage Class (MSC) drive when connected to a PC via the Apollo Port.
+* **Interface:** Configuration is performed via a self-contained HTML file generated on the fly.
+* **Security:** This offline-first approach ensures 100% air-gapped setup capability.
+
+### D. Context-Aware Automation
+The firmware implements logic to distinguish between legitimate calls and disturbances:
+* **Anti-Paranoia Filter:** Suppresses repetitive ringing.
+* **Smart Access:** Silent door opening via long-press pattern.
+* **Security Light:** Automatic stair light activation upon floor bell trigger.
+
+## 4. ECOSYSTEM ROADMAP
+
+BIGBEE Intercom is the foundational node of a decentralized, local-first home automation grid.
+
+| PROJECT NODE | ROLE | STATUS |
 | :--- | :--- | :--- |
-| ** BIGBEE INTERCOM** | **Entry Point / Security** | **🟢 ACTIVE DEV** |
-| ** BIGBEE HIVE** | **Local Core / MQTT Hub** | 🟡 **R&D / CONCEPT** |
-| ** BIGBEE CLIMA** | **HVAC / Climate Control** | 🔴 *CLASSIFIED* |
-| ** BIGBEE SENSE** | **Presence / Multi-Sensor** | 🔴 *CLASSIFIED* |
+| **BIGBEE INTERCOM** | Entry Point & Security | ACTIVE DEVELOPMENT |
+| **BIGBEE HIVE** | Local Core & MQTT Bridge | R&D / CONCEPT |
+| **BIGBEE CLIMA** | HVAC & Climate Control | CLASSIFIED |
+| **BIGBEE SENSE** | Presence & Multi-Sensor | CLASSIFIED |
 
-*The ecosystem shares the same DNA: Zero-Cloud, 100% Privacy, Industrial Reliability.*
+## 5. TECHNICAL CLAIMS
 
+Authorship and temporal priority are claimed for the following implementations:
 
-6. LICENSE AND TIMESTAMPS
+1.  **Apollo Interlock Topology:** A discrete component circuit for automatic, bi-directional power arbitration on a single connector without MCU supervision.
+2.  **Battery Preservation Bypass:** The use of electromechanical switching to physically isolate electrochemical cells during external power operation.
+3.  **Magic OTG Deployment:** The method of using a locally generated file system for headless device configuration.
 
-This hardware project is released under license CERN OHL-S v2.
-The associated firmware is released under license GNU GPL v3.
+## 6. LEGAL DEPOSIT & TIMESTAMP
 
-Architecture Definition Date: November 30, 2025
-Contact: project.bigbee@gmail.com
+The Master Technical Disclosure (PDF) containing the complete schematics, PCB layout, and source code structure has been timestamped via **PEC (Certified Email)** to establish incontestable Prior Art in accordance with international intellectual property standards.
 
-### LEGAL DEPOSIT & SECURE TIMESTAMP
-The Master Technical Disclosure (PDF) containing full schematics and source code structure has been timestamped via **PEC (Certified Email)** to establish incontestable Prior Art.
-
-**SHA-256 HASH OF THE DEPOSITED FILE:**
+**SHA-256 HASH OF THE MASTER DEPOSIT:**
 `9396d5be6598b9766cd52411cb79d3a85c1cc8e3e17776618e5469ff288f179d`
 
-*(This hash creates a mathematical link between this public repository and the certified legal document).*
+*(This hash creates a mathematical immutable link between this public repository and the certified legal document).*
 
+---
+
+**CONTACT & RESOURCES**
+* **Official Website:** bigbee-project.org
+* **Maintainer:** Project BIGBEE Lead
+* **Repository:** github.com/bigbee-project
